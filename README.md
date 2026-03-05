@@ -56,7 +56,7 @@ Combine all variant generators to produce the full set of password candidates:
 3. For each variant from steps 1-2, also generate number variants with suffixes 0-99
 4. Sort and deduplicate the results
 
-After you have implemented this, `cargo test test_seq_crack` should pass.
+After you have implemented this, `cargo test test_seq_crack --release` should pass.
 
 Alternatively, you can manually test your implementation using:
 
@@ -77,7 +77,7 @@ Your implementation should:
 
 Refer to the [Rayon documentation](https://docs.rs/rayon/latest/rayon/) for `ParallelIterator` methods.
 
-After you have implemented this, `cargo test test_par_crack` should pass.
+After you have implemented this, `cargo test test_par_crack --release` should pass.
 
 ```sh
 $ cargo run -- par hash/easy_5_100.txt dict/rockyou-100.txt
@@ -87,7 +87,7 @@ $ cargo run -- par hash/easy_5_100.txt dict/rockyou-100.txt
 
 ```bash
 # Run all tests
-cargo test --release --no-fail-test
+cargo test --release --no-fail-fast
 
 # Run a specific test
 cargo test test_first_letter_uppercase --release
@@ -105,3 +105,13 @@ Test cases of increasing difficulty:
 Compare the runtime of `seq_crack` vs `par_crack` to see the speedup from parallelism.
 
 Specifically, you should see a 4x (or more) speedup on the largest test case when using `par_crack` (assuming you run on a machine with 4 or more cores).
+
+## Grading
+Vanilla tests are worth 5 points;
+Tests with "test_seq_crack" are worth 15 points;
+Tests with "test_par_crack" are worth 30 points.
+
+You can run `python3 grade.py` to compute your score.
+
+## Submission
+You can submit your assignment by running `make turnin`
